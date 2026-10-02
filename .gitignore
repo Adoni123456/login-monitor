@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -22,3 +23,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+=======
+
+target/
+.classpath
+.project
+.settings/
+*.log
+src/main/resources/application.properties
+>>>>>>> 19091f0c188cbd66daccb5e07e25a3cca59428c6
