@@ -11,32 +11,12 @@ Login requests can be tested using Postman.
 6. Use `GET /api/suspicious` to retrieve detected suspicious activities.
 7. The React dashboard displays this information visually.
 
-    Postman
-                |
-                | POST /api/login
-                v
-        Spring Boot Backend
-                |
-                v
-          LoginService
-                |
-        +-------+-------+
-        |               |
-        v               v
-  login_attempts   Suspicious Detection
-        |               |
-        |               v
-        |       suspicious_activity
-        |               |
-        +-------+-------+
-                |
-                v
-              MySQL
-                |
-                | GET /api/login
-                | GET /api/suspicious
-                v
-        React Dashboard
+Login requests are submitted through Postman → 
+processed by the Spring Boot backend → 
+stored in MySQL → 
+suspicious behaviour is detected and recorded →
+the React dashboard retrieves and displays the login and suspicious activity data.
+
 # React Dashboard
 
 The React frontend provides a visual dashboard for monitoring login
