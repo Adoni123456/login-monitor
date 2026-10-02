@@ -1,3 +1,75 @@
+# Testing Workflow
+
+Login requests can be tested using Postman.
+
+1. Send a login attempt using `POST /api/login`.
+2. The Spring Boot backend validates and stores the login attempt.
+3. The system checks for suspicious behaviour.
+4. If suspicious behaviour is detected, it is stored in
+   `suspicious_activity`.
+5. Use `GET /api/login` to retrieve login attempts.
+6. Use `GET /api/suspicious` to retrieve detected suspicious activities.
+7. The React dashboard displays this information visually.
+
+    Postman
+                |
+                | POST /api/login
+                v
+        Spring Boot Backend
+                |
+                v
+          LoginService
+                |
+        +-------+-------+
+        |               |
+        v               v
+  login_attempts   Suspicious Detection
+        |               |
+        |               v
+        |       suspicious_activity
+        |               |
+        +-------+-------+
+                |
+                v
+              MySQL
+                |
+                | GET /api/login
+                | GET /api/suspicious
+                v
+        React Dashboard
+# React Dashboard
+
+The React frontend provides a visual dashboard for monitoring login
+activity and suspicious behaviour.
+
+The dashboard retrieves data from the Spring Boot REST APIs and displays:
+
+- Total login attempts
+- Successful login attempts
+- Failed login attempts
+- Suspicious activities
+- Login activity records
+- Suspicious activity details and reasons
+
+The current dashboard is read-only. Login attempts are submitted and
+tested through the REST API using Postman.
+
+The data flow is:
+
+React Dashboard
+      |
+      | GET /api/login
+      | GET /api/suspicious
+      v
+Spring Boot REST API
+      |
+      v
+MySQL Database
+
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
